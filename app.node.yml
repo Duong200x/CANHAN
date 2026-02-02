@@ -1,0 +1,15 @@
+services:
+  app:
+    build: ./apps/node
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    environment:
+      # Chọn 1 trong 2:
+      MONGO_URL: "mongodb://${MONGO_ROOT_USER:-admin}:${MONGO_ROOT_PASS:-admin123}@mongo:27017/?authSource=admin"
+      MYSQL_HOST: "mysql"
+      MYSQL_DATABASE: "${MYSQL_DATABASE:-appdb}"
+      MYSQL_USER: "${MYSQL_USER:-app}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD:-app123}"
+      # Firebase (nếu dùng emulator):
+      FIREBASE_AUTH_EMULATOR_HOST: "firebase-emulator:9099"
+      FIRESTORE_EMULATOR_HOST: "firebase-emulator:8080"

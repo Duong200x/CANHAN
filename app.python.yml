@@ -1,0 +1,13 @@
+services:
+  app:
+    build: ./apps/python
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    environment:
+      MONGO_URL: "mongodb://${MONGO_ROOT_USER:-admin}:${MONGO_ROOT_PASS:-admin123}@mongo:27017/?authSource=admin"
+      MYSQL_HOST: "mysql"
+      MYSQL_DATABASE: "${MYSQL_DATABASE:-appdb}"
+      MYSQL_USER: "${MYSQL_USER:-app}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD:-app123}"
+      FIREBASE_AUTH_EMULATOR_HOST: "firebase-emulator:9099"
+      FIRESTORE_EMULATOR_HOST: "firebase-emulator:8080"
