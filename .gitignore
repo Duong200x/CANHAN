@@ -1,0 +1,19 @@
+# Env
+.env
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Common build outputs (giữ nếu dùng)
+target/
+bin/
+obj/
+dist/
+build/
+node_modules/
