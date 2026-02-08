@@ -3,6 +3,9 @@ services:
     build: ./apps/node
     ports:
       - "${APP_PORT:-3000}:3000"
+    depends_on:
+      mongo:
+        condition: service_healthy
     environment:
       # Chọn 1 trong 2:
       MONGO_URL: "mongodb://${MONGO_ROOT_USER:-admin}:${MONGO_ROOT_PASS:-admin123}@mongo:27017/?authSource=admin"
@@ -12,4 +15,4 @@ services:
       MYSQL_PASSWORD: "${MYSQL_PASSWORD:-app123}"
       # Firebase (nếu dùng emulator):
       FIREBASE_AUTH_EMULATOR_HOST: "firebase-emulator:9099"
-      FIRESTORE_EMULATOR_HOST: "firebase-emulator:8080"
+      FIRESTORE_EMULATOR_HOST: "firebase-emulator:8082"
